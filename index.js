@@ -19,3 +19,14 @@ mmysqlConnection.connect((err)=>{
     console.log('DB connection failed \n Error : '+JSON.stringify(err, undefined, 2));
 });
 
+app.listen(3000,()=>console.log('Express sercer is running at port no : 3000'));
+
+//Get all employees
+app.get('/employee',(res,req)=>{
+    mmysqlConnection.query('SELECT * FROM employee',(err, rows, fields)=>{
+        if(!err)
+        console.log(rows[0].EmpID);
+        else
+        console.log(err);
+    })
+});
